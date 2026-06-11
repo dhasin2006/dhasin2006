@@ -1,0 +1,6 @@
+{
+  "name": "StrideX Footwear",
+  "description": "Elite performance athletic footwear e-commerce application featuring product catalog, size and styling selector, and dynamic shopping bag management.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}
