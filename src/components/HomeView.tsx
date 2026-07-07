@@ -4,6 +4,7 @@ import { ArrowRight, Star, Tag, Activity, Zap, Shield, ArrowUpRight } from 'luci
 import { Product, ScreenType } from '../types';
 import { products, testimonials } from '../data';
 import { ImageTrail } from './ImageTrail';
+import Ferrofluid from './Ferrofluid';
 
 interface HomeViewProps {
   setScreen: (screen: ScreenType) => void;
@@ -45,11 +46,31 @@ export const HomeView: React.FC<HomeViewProps> = ({ setScreen, setSelectedProduc
 
   return (
     <div className="space-y-20 pb-20 overflow-hidden">
-      {/* 1. Hero Banner Section */}
-      <section className="relative bg-[#111314] text-white min-h-[580px] md:min-h-[660px] flex items-center overflow-hidden">
-        {/* Abstract background vector lines and glows */}
-        <div className="absolute top-0 right-0 w-1/2 h-full bg-linear-to-bl from-orange-600/10 via-amber-600/5 to-transparent pointer-events-none" />
-        <div className="absolute -bottom-48 -left-48 w-96 h-96 bg-orange-600/10 rounded-full blur-3xl pointer-events-none" />
+      {/* 1. Hero Banner Section with Ferrofluid Background */}
+      <section className="relative bg-[#0a0a0c] text-white min-h-[640px] md:min-h-[720px] flex items-center overflow-hidden border-b border-gray-800">
+        {/* Ferrofluid interactive background animation */}
+        <div className="absolute inset-0 z-0 opacity-70">
+          <Ferrofluid
+            colors={["#ffffff", "#ff5722", "#ffffff"]}
+            speed={0.5}
+            scale={1.6}
+            turbulence={1}
+            fluidity={0.1}
+            rimWidth={0.2}
+            sharpness={2.5}
+            shimmer={1.5}
+            glow={2}
+            flowDirection="down"
+            opacity={1}
+            mouseInteraction
+            mouseStrength={1}
+            mouseRadius={0.35}
+          />
+        </div>
+
+        {/* Abstract background overlays / gradient vignette */}
+        <div className="absolute inset-0 z-1 bg-linear-to-r from-[#0a0a0c] via-[#0a0a0c]/80 to-transparent pointer-events-none" />
+        <div className="absolute inset-0 z-1 bg-linear-to-t from-[#0a0a0c] via-transparent to-[#0a0a0c]/60 pointer-events-none" />
 
         <div className="max-w-7xl mx-auto px-4 md:px-8 py-16 grid grid-cols-1 lg:grid-cols-12 gap-12 items-center relative z-10 w-full">
           {/* Hero Left Content */}
@@ -135,6 +156,8 @@ export const HomeView: React.FC<HomeViewProps> = ({ setScreen, setSelectedProduc
           </div>
         </div>
       </section>
+
+
 
       {/* 2. Style Categories Quick Navigation */}
       <section className="max-w-7xl mx-auto px-4 md:px-8">
