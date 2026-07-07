@@ -3,6 +3,7 @@ import { motion } from 'motion/react';
 import { ArrowRight, Star, Tag, Activity, Zap, Shield, ArrowUpRight } from 'lucide-react';
 import { Product, ScreenType } from '../types';
 import { products, testimonials } from '../data';
+import { ImageTrail } from './ImageTrail';
 
 interface HomeViewProps {
   setScreen: (screen: ScreenType) => void;
@@ -18,6 +19,7 @@ export const HomeView: React.FC<HomeViewProps> = ({ setScreen, setSelectedProduc
   const [distance, setDistance] = useState<string>('5k');
   const [pace, setPace] = useState<string>('medium');
   const [recommendation, setRecommendation] = useState<Product | null>(null);
+  const [trailKey, setTrailKey] = useState<number>(0);
 
   const runSimulator = () => {
     // Recommend based on user choice
@@ -266,6 +268,34 @@ export const HomeView: React.FC<HomeViewProps> = ({ setScreen, setSelectedProduc
               </div>
             </div>
           ))}
+        </div>
+      </section>
+
+      {/* Interactive Image Trail Showcase */}
+      <section className="max-w-7xl mx-auto px-4 md:px-8">
+        <div className="flex flex-col md:flex-row justify-between items-baseline mb-6 border-b border-gray-100 pb-4">
+          <div className="space-y-1">
+            <span className="font-mono text-[10px] tracking-widest text-[#ff5722] font-bold uppercase block">
+              KINETIC MOTION ENGINE
+            </span>
+            <h2 className="font-display font-black text-2xl sm:text-3xl tracking-tight uppercase">
+              INTERACTIVE IMAGE TRAIL
+            </h2>
+          </div>
+          <button
+            onClick={() => setTrailKey(prev => prev + 1)}
+            className="text-xs font-mono font-bold tracking-widest text-[#ff5722] hover:underline uppercase flex items-center space-x-1.5 transition-colors cursor-pointer mt-2 md:mt-0"
+          >
+            <span>RESET TRAIL MATRIX</span>
+          </button>
+        </div>
+
+        <div style={{ height: '500px', position: 'relative', overflow: 'hidden'}} className="shadow-xl rounded-sm">
+          <ImageTrail
+            key={trailKey}
+            items={products.map(p => p.image)}
+            variant="1"
+          />
         </div>
       </section>
 
