@@ -108,21 +108,25 @@ export const HomeView: React.FC<HomeViewProps> = ({ setScreen, setSelectedProduc
             </div>
 
             <div className="flex flex-wrap gap-4 pt-2">
-              <button
+              <motion.button
+                whileHover={{ scale: 1.03, y: -2 }}
+                whileTap={{ scale: 0.97 }}
                 onClick={() => setScreen('listing')}
-                className="bg-[#ff5722] hover:bg-orange-600 text-white font-display font-bold text-xs tracking-widest px-8 py-4 uppercase flex items-center space-x-2 shadow-lg hover:shadow-orange-500/25 transition-all cursor-pointer rounded-xs"
+                className="bg-gradient-to-r from-[#ff5722] to-amber-600 hover:from-orange-600 hover:to-amber-700 text-white font-display font-bold text-xs tracking-widest px-8 py-4 uppercase flex items-center space-x-2 shadow-xl shadow-orange-500/30 transition-all cursor-pointer rounded-xs"
                 id="hero-shop-now"
               >
                 <span>EXPLORE ALL SNEAKERS</span>
                 <ArrowRight className="w-4 h-4" />
-              </button>
-              <button
-                onClick={() => handleProductClick('aero-core-velocity-elite')}
-                className="bg-transparent hover:bg-white/5 border border-white/20 text-white font-display font-bold text-xs tracking-widest px-8 py-4 uppercase transition-all cursor-pointer rounded-xs"
-                id="hero-view-featured"
+              </motion.button>
+              <motion.button
+                whileHover={{ scale: 1.03, y: -2 }}
+                whileTap={{ scale: 0.97 }}
+                onClick={() => setScreen('listing')}
+                className="bg-black/40 hover:bg-black/60 backdrop-blur-md border border-orange-500/40 text-orange-400 font-display font-bold text-xs tracking-widest px-8 py-4 uppercase transition-all cursor-pointer rounded-xs shadow-lg flex items-center space-x-2"
+                id="hero-browse-catalog"
               >
-                AERO-CORE MODEL
-              </button>
+                <span>BROWSE 360° CATALOG</span>
+              </motion.button>
             </div>
           </div>
 
@@ -133,7 +137,6 @@ export const HomeView: React.FC<HomeViewProps> = ({ setScreen, setSelectedProduc
             <div className="absolute w-[220px] h-[220px] sm:w-[280px] sm:h-[280px] rounded-full border border-dashed border-white/10" />
 
             <div className="relative group max-w-[440px]">
-              {/* Dynamic Image with subtle rotation entrance */}
               <motion.img
                 initial={{ opacity: 0, rotate: -15, scale: 0.8 }}
                 animate={{ opacity: 1, rotate: -5, scale: 1 }}
@@ -150,7 +153,7 @@ export const HomeView: React.FC<HomeViewProps> = ({ setScreen, setSelectedProduc
               </div>
               <div className="absolute -bottom-4 -left-4 bg-gray-900 border border-gray-800 text-white font-mono text-[10px] tracking-widest px-3 py-1.5 rounded-xs shadow-md z-20 flex items-center space-x-1.5 uppercase">
                 <Activity className="w-3.5 h-3.5 text-orange-500" />
-                <span>SPEC PRICE // $224.99</span>
+                <span>SPEC PRICE // ₹224.99</span>
               </div>
             </div>
           </div>
@@ -259,7 +262,6 @@ export const HomeView: React.FC<HomeViewProps> = ({ setScreen, setSelectedProduc
                     {p.tags[0]}
                   </span>
                 )}
-                {/* Image display with responsive micro zoom */}
                 <img
                   src={p.image}
                   alt={p.name}
@@ -281,7 +283,7 @@ export const HomeView: React.FC<HomeViewProps> = ({ setScreen, setSelectedProduc
 
                 <div className="flex items-center justify-between pt-1 border-t border-gray-50 mt-2">
                   <span className="font-mono font-black text-sm text-gray-900">
-                    ${p.price.toFixed(2)}
+                    ₹{p.price.toFixed(2)}
                   </span>
                   {/* Miniature specs button or chevron */}
                   <span className="text-[10px] font-mono text-gray-400 group-hover:text-[#ff5c00] flex items-center gap-1 uppercase tracking-widest transition-colors font-bold">

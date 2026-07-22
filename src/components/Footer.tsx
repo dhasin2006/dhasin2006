@@ -71,25 +71,32 @@ export const Footer: React.FC<FooterProps> = ({ setScreen }) => {
 
         {/* Directory Columns */}
         <div>
-          <h4 className="font-display font-bold text-xs tracking-widest text-[#ff5722] uppercase mb-4">SPECIFICATIONS</h4>
+          <h4 className="font-display font-bold text-xs tracking-widest text-[#ff5722] uppercase mb-4">NAVIGATION</h4>
           <ul className="space-y-2.5 text-xs">
+            <li>
+              <button onClick={() => setScreen('home')} className="hover:text-white transition-colors cursor-pointer text-left">
+                HOME
+              </button>
+            </li>
+            <li>
+              <button onClick={() => setScreen('about')} className="hover:text-white transition-colors cursor-pointer text-left">
+                ABOUT
+              </button>
+            </li>
+            <li>
+              <button onClick={() => setScreen('contact')} className="hover:text-white transition-colors cursor-pointer text-left">
+                CONTACT
+              </button>
+            </li>
             <li>
               <button onClick={() => setScreen('listing')} className="hover:text-white transition-colors cursor-pointer text-left">
                 SNEAKERS CATALOG
               </button>
             </li>
             <li>
-              <button onClick={() => setScreen('detail')} className="hover:text-white transition-colors cursor-pointer text-left">
-                AERO-CORE VELOCITY
+              <button onClick={() => setScreen('bag')} className="hover:text-white transition-colors cursor-pointer text-left">
+                MY BAG
               </button>
-            </li>
-            <li>
-              <button onClick={() => setScreen('home')} className="hover:text-white transition-colors cursor-pointer text-left">
-                SYSTEM LABS
-              </button>
-            </li>
-            <li>
-              <a href="#testimonials" className="hover:text-white transition-colors">ATHLETE TESTIMONIALS</a>
             </li>
           </ul>
         </div>

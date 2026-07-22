@@ -185,7 +185,7 @@ export const DetailView: React.FC<DetailViewProps> = ({
             <div>
               <span className="text-[9px] font-mono text-gray-400 block tracking-widest uppercase">SPEC PRICE PROVISION</span>
               <span className="font-mono text-2xl font-black tracking-tight text-white">
-                ${product.price.toFixed(2)}
+                ₹{product.price.toFixed(2)}
               </span>
             </div>
             <div className="text-right">
@@ -219,7 +219,7 @@ export const DetailView: React.FC<DetailViewProps> = ({
                   const active = selectedColor === colorName;
                   return (
                     <button
-                      key={colorName}
+                      key={`${colorName}-${idx}`}
                       onClick={() => handleColorChange(colorName, idx)}
                       title={colorName}
                       className={`h-8 px-3.5 rounded-sm border text-[10px] font-mono font-bold uppercase transition-all tracking-wider cursor-pointer flex items-center space-x-1.5 ${
@@ -252,11 +252,11 @@ export const DetailView: React.FC<DetailViewProps> = ({
                 </span>
               </div>
               <div className="grid grid-cols-5 gap-2">
-                {product.sizes.map((size) => {
+                {product.sizes.map((size, idx) => {
                   const active = selectedSize === size;
                   return (
                     <button
-                      key={size}
+                      key={`${size}-${idx}`}
                       onClick={() => setSelectedSize(size)}
                       className={`py-2 text-xs font-mono font-bold rounded-xs cursor-pointer transition-all border ${
                         active
@@ -274,14 +274,16 @@ export const DetailView: React.FC<DetailViewProps> = ({
 
           {/* ACTION BUTTONS */}
           <div className="pt-4 flex flex-col sm:flex-row gap-4">
-            <button
+            <motion.button
+              whileHover={{ scale: 1.02, y: -2 }}
+              whileTap={{ scale: 0.98 }}
               onClick={handleAddToBag}
-              className="flex-1 bg-[#ff5722] hover:bg-orange-600 text-white font-display font-black text-xs tracking-widest py-4 rounded-xs uppercase flex items-center justify-center space-x-2.5 shadow-lg shadow-orange-500/15 group cursor-pointer transition-all duration-300"
+              className="flex-1 bg-gradient-to-r from-[#ff5722] to-amber-600 hover:from-orange-600 hover:to-amber-700 text-white font-display font-black text-xs tracking-widest py-4 rounded-xs uppercase flex items-center justify-center space-x-2.5 shadow-xl shadow-orange-500/25 group cursor-pointer transition-all duration-300"
               id="btn-detail-add"
             >
               <ShoppingBag className="w-4 h-4" />
               <span>STOW SPEC IN SHOPPING BAG</span>
-            </button>
+            </motion.button>
           </div>
 
           <div className="text-[10px] text-gray-400 font-mono flex items-center justify-center gap-1.5 p-3.5 bg-gray-50 border border-gray-100 rounded-xs uppercase">

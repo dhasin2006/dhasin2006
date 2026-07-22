@@ -38,4 +38,4 @@ export interface Testimonial {
   avatar: string;
 }
 
-export type ScreenType = 'home' | 'listing' | 'detail' | 'bag';
+export type ScreenType = 'home' | 'about' | 'contact' | 'listing' | 'detail' | 'bag';

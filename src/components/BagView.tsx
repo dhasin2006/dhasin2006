@@ -225,7 +225,7 @@ export const BagView: React.FC<BagViewProps> = ({ cart, setCart, setScreen, addT
                   
                   {/* Dynamic price for the item quantity */}
                   <span className="font-mono font-black text-sm text-gray-900 order-2 sm:order-1">
-                    ${(item.product.price * item.quantity).toFixed(2)}
+                    ₹{(item.product.price * item.quantity).toFixed(2)}
                   </span>
 
                   {/* Quantity adjustments */}
@@ -272,25 +272,25 @@ export const BagView: React.FC<BagViewProps> = ({ cart, setCart, setScreen, addT
             <div className="divide-y divide-gray-50 font-mono text-[11px] text-gray-400 space-y-3">
               <div className="flex justify-between py-1.5">
                 <span>SUBTOTAL SPEC:</span>
-                <span className="text-gray-900 font-bold">${subtotal.toFixed(2)}</span>
+                <span className="text-gray-900 font-bold">₹{subtotal.toFixed(2)}</span>
               </div>
               {activePromoDiscount > 0 && (
                 <div className="flex justify-between py-1.5 text-green-500">
                   <span>PROMO SPEC REDUCTION:</span>
-                  <span>-${discountAmount.toFixed(2)}</span>
+                  <span>-₹{discountAmount.toFixed(2)}</span>
                 </div>
               )}
               <div className="flex justify-between py-1.5">
                 <span>EXPRESS TARGET DELIVERY:</span>
                 {shipping === 0 ? (
-                  <span className="text-green-500 font-extrabold uppercase">[FREE OVER $150]</span>
+                  <span className="text-green-500 font-extrabold uppercase">[FREE OVER ₹150]</span>
                 ) : (
-                  <span className="text-gray-900 font-bold">${shipping.toFixed(2)}</span>
+                  <span className="text-gray-900 font-bold">₹{shipping.toFixed(2)}</span>
                 )}
               </div>
               <div className="flex justify-between py-3 border-t-2 border-gray-900 text-xs font-display font-black text-gray-950">
                 <span className="uppercase">TOTAL TRANSACTION:</span>
-                <span className="text-base text-[#ff5722] font-mono">${totalCost.toFixed(2)}</span>
+                <span className="text-base text-[#ff5722] font-mono">₹{totalCost.toFixed(2)}</span>
               </div>
             </div>
 
@@ -336,14 +336,16 @@ export const BagView: React.FC<BagViewProps> = ({ cart, setCart, setScreen, addT
                   <span>MINTING SPEC SCHEMES...</span>
                 </button>
               ) : (
-                <button
+                <motion.button
+                  whileHover={{ scale: 1.02, y: -2 }}
+                  whileTap={{ scale: 0.98 }}
                   onClick={runTransactSubmission}
-                  className="w-full bg-[#ff5722] hover:bg-orange-600 text-white py-4.5 rounded-xs font-display font-black text-xs tracking-widest uppercase flex items-center justify-center space-x-2 w-full shadow-lg shadow-orange-500/15 cursor-pointer transition-all duration-300"
+                  className="w-full bg-gradient-to-r from-[#ff5722] to-amber-600 hover:from-orange-600 hover:to-amber-700 text-white py-4.5 rounded-xs font-display font-black text-xs tracking-widest uppercase flex items-center justify-center space-x-2 w-full shadow-xl shadow-orange-500/25 cursor-pointer transition-all duration-300"
                   id="btn-checkout-transact"
                 >
                   <CreditCard className="w-4 h-4" />
-                  <span>PAY ${totalCost.toFixed(2)} SECURE NOW</span>
-                </button>
+                  <span>PAY ₹{totalCost.toFixed(2)} SECURE NOW</span>
+                </motion.button>
               )}
               <div className="text-[9px] font-mono text-gray-400 text-center uppercase tracking-wider">
                 LOCK🔒 // SECURE AES EXCHANGE CONFIRMED

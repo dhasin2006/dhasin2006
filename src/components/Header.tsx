@@ -1,5 +1,5 @@
 import React from 'react';
-import { ShoppingBag, Search, ChevronRight } from 'lucide-react';
+import { ShoppingBag, Search } from 'lucide-react';
 import { ScreenType } from '../types';
 
 interface HeaderProps {
@@ -15,8 +15,8 @@ export const Header: React.FC<HeaderProps> = ({ currentScreen, setScreen, cartCo
       <div className="bg-black text-white text-[11px] font-mono tracking-widest text-center py-2 uppercase px-4 flex justify-between items-center max-w-7xl mx-auto md:px-8">
         <span>STRIDEX ELITE LABS // GLOBAL RELEASE PROVISION</span>
         <div className="hidden sm:flex items-center gap-4">
-          <span>FREE EXPRESS TARGET SHIPPING OVER $150</span>
-          <span className="text-[#ff5c00]">CODE: STRIDEX7</span>
+          <span>FREE EXPRESS TARGET SHIPPING OVER ₹150</span>
+          <span className="text-[#ff5722]">CODE: STRIDEX7</span>
         </div>
       </div>
 
@@ -32,7 +32,7 @@ export const Header: React.FC<HeaderProps> = ({ currentScreen, setScreen, cartCo
           </div>
           <div>
             <span className="font-display font-black text-xl tracking-tighter text-gray-900 leading-none block">
-              STRID<span className="text-[#ff5c00]">Ξ</span>X
+              STRID<span className="text-[#ff5722]">Ξ</span>X
             </span>
             <span className="font-mono text-[9px] tracking-widest text-[#888888] uppercase block">
               FOOTWEAR SYSTEM
@@ -41,7 +41,7 @@ export const Header: React.FC<HeaderProps> = ({ currentScreen, setScreen, cartCo
         </button>
 
         {/* Global Navigation links with active style indicators */}
-        <nav className="hidden md:flex space-x-8 font-display font-bold text-xs tracking-widest">
+        <nav className="hidden md:flex space-x-6 lg:space-x-8 font-display font-bold text-xs tracking-widest">
           <button
             onClick={() => setScreen('home')}
             className={`cursor-pointer transition-colors pb-1 border-b-2 uppercase py-1 ${
@@ -51,7 +51,29 @@ export const Header: React.FC<HeaderProps> = ({ currentScreen, setScreen, cartCo
             }`}
             id="nav-home"
           >
-            SYSTEM OVERVIEW
+            HOME
+          </button>
+          <button
+            onClick={() => setScreen('about')}
+            className={`cursor-pointer transition-colors pb-1 border-b-2 uppercase py-1 ${
+              currentScreen === 'about'
+                ? 'text-gray-900 border-[#ff5722]'
+                : 'text-gray-500 border-transparent hover:text-gray-900 hover:border-gray-200'
+            }`}
+            id="nav-about"
+          >
+            ABOUT
+          </button>
+          <button
+            onClick={() => setScreen('contact')}
+            className={`cursor-pointer transition-colors pb-1 border-b-2 uppercase py-1 ${
+              currentScreen === 'contact'
+                ? 'text-gray-900 border-[#ff5722]'
+                : 'text-gray-500 border-transparent hover:text-gray-900 hover:border-gray-200'
+            }`}
+            id="nav-contact"
+          >
+            CONTACT
           </button>
           <button
             onClick={() => setScreen('listing')}
@@ -63,17 +85,6 @@ export const Header: React.FC<HeaderProps> = ({ currentScreen, setScreen, cartCo
             id="nav-listing"
           >
             SNEAKERS CATALOG
-          </button>
-          <button
-            onClick={() => setScreen('detail')}
-            className={`cursor-pointer transition-colors pb-1 border-b-2 uppercase py-1 ${
-              currentScreen === 'detail'
-                ? 'text-gray-900 border-[#ff5722]'
-                : 'text-gray-500 border-transparent hover:text-gray-900 hover:border-gray-200'
-            }`}
-            id="nav-detail"
-          >
-            AERO-CORE ELITE
           </button>
           <button
             onClick={() => setScreen('bag')}

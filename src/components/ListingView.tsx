@@ -227,11 +227,11 @@ export const ListingView: React.FC<ListingViewProps> = ({ setScreen, setSelected
                 PRO SIZINGS US
               </h4>
               <div className="grid grid-cols-4 gap-1.5">
-                {allSizes.map(size => {
+                {allSizes.map((size, idx) => {
                   const active = selectedSizes.includes(size);
                   return (
                     <button
-                      key={size}
+                      key={`${size}-${idx}`}
                       onClick={() => toggleSize(size)}
                       className={`py-1.5 text-[10px] font-mono border rounded-xs transition-colors font-bold cursor-pointer outline-hidden ${
                         active
@@ -252,11 +252,11 @@ export const ListingView: React.FC<ListingViewProps> = ({ setScreen, setSelected
                 COLOR COMPOUNDS
               </h4>
               <div className="flex flex-wrap gap-2">
-                {colorSwatches.map(color => {
+                {colorSwatches.map((color, idx) => {
                   const active = selectedColors.includes(color.label);
                   return (
                     <button
-                      key={color.label}
+                      key={`${color.label}-${idx}`}
                       onClick={() => toggleColor(color.label)}
                       title={color.label}
                       className={`w-7 h-7 rounded-full border flex items-center justify-center transition-all cursor-pointer relative ${
@@ -281,7 +281,7 @@ export const ListingView: React.FC<ListingViewProps> = ({ setScreen, setSelected
             <div className="space-y-2.5 border-t border-gray-50 pt-5">
               <div className="flex justify-between items-baseline text-[10px] font-mono font-bold tracking-wider text-gray-400">
                 <span className="uppercase">PRICE TRESHOLD</span>
-                <span className="text-gray-900">${maxPrice}</span>
+                <span className="text-gray-900">₹{maxPrice}</span>
               </div>
               <input
                 type="range"
@@ -293,8 +293,8 @@ export const ListingView: React.FC<ListingViewProps> = ({ setScreen, setSelected
                 className="w-full accent-orange-600 h-1 bg-gray-200 rounded-lg cursor-pointer"
               />
               <div className="flex justify-between items-center text-[9px] text-gray-400 font-mono">
-                <span>$100.00</span>
-                <span>$260.00</span>
+                <span>₹100.00</span>
+                <span>₹260.00</span>
               </div>
             </div>
           </div>
@@ -359,7 +359,7 @@ export const ListingView: React.FC<ListingViewProps> = ({ setScreen, setSelected
 
                     <div className="flex items-center justify-between pt-1 border-t border-gray-50 mt-1">
                       <span className="font-mono font-black text-sm text-gray-900">
-                        ${p.price.toFixed(2)}
+                        ₹{p.price.toFixed(2)}
                       </span>
                       <span className="text-[10px] font-mono text-gray-400 group-hover:text-[#ff5c00] flex items-center gap-1.5 transition-colors uppercase tracking-widest font-extrabold">
                         SELECT <ArrowRight className="w-3.0 h-3.0 text-[#ff5722]" />
